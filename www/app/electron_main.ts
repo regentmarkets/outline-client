@@ -44,7 +44,7 @@ ipcRenderer.on('localizationRequest', (e: Event, localizationKeys: string[]) => 
     ipcRenderer.send('localizationResponse', null);
     return;
   }
-  let localizationResult: {[key: string]: string } = {};
+  const localizationResult: {[key: string]: string } = {};
   for (const key of localizationKeys) {
     localizationResult[key] = localize(key);
   }
