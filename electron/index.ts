@@ -33,6 +33,12 @@ let mainWindow: Electron.BrowserWindow|null;
 
 let tray: Tray;
 let isAppQuitting = false;
+// Default to English strings in case we fail to retrieve them from the renderer process.
+let localizedStrings: {[key: string]: string} = {
+  'connected-server-state': 'Connected',
+  'disconnected-server-state': 'Disconnected',
+  'quit': 'Quit'
+};
 
 const debugMode = process.env.OUTLINE_DEBUG === 'true';
 
@@ -82,6 +88,7 @@ function createWindow(connectionAtShutdown?: SerializableConnection) {
 
   // TODO: is this the most appropriate event?
   mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow!.webContents.send('localizationRequest', Object.keys(localizedStrings));
     interceptShadowsocksLink(process.argv);
     if (connectionAtShutdown) {
       const serverId = connectionAtShutdown.id;
@@ -124,9 +131,13 @@ function createTrayIcon(status: ConnectionStatus) {
     });
     tray.setToolTip('Outline');
   }
+  // Retrieve localized strings, falling back to the pre-populated English default.
+  const statusString = isConnected ? localizedStrings['connected-server-state']
+                                   : localizedStrings['disconnected-server-state'];
+  const quitString =  localizedStrings['quit'];
   const menuTemplate = [
-    {label: `Status: ${isConnected ? 'Connected' : 'Disconnected'}`, enabled: false},
-    {type: 'separator'} as MenuItemConstructorOptions, {label: 'Exit', click: quitApp}
+    {label: statusString, enabled: false},
+    {type: 'separator'} as MenuItemConstructorOptions, {label: quitString, click: quitApp}
   ];
   tray.setContextMenu(Menu.buildFromTemplate(menuTemplate));
 }
@@ -206,7 +217,6 @@ app.on('ready', () => {
   } else {
     createWindow();
   }
-  createTrayIcon(ConnectionStatus.DISCONNECTED);
 });
 
 app.on('activate', () => {
@@ -290,6 +300,13 @@ ipcMain.on('environment-info', (event: Event, info: {appVersion: string, dsn: st
 });
 
 ipcMain.on('quit-app', quitApp);
+
+ipcMain.on('localizationResponse', (event: Event, localizationResult: {[key: string]: string}) => {
+  if (!!localizationResult) {
+    localizedStrings = localizationResult;
+  }
+  createTrayIcon(ConnectionStatus.DISCONNECTED);
+});
 
 // Notify the UI of updates.
 autoUpdater.on('update-downloaded', (ev, info) => {
