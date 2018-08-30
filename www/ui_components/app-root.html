@@ -234,7 +234,7 @@
           </div>
           <div main-title class$="[[page]]">
             <img src$="[[rootPath]]assets/outline-client-logo.svg" hidden$="[[shouldShowAppLogo]]">
-            <div >[[localize(pageTitleKey)]]</div>
+            <div hidden$="[[!shouldShowAppLogo]]">[[localize(pageTitleKey)]]</div>
           </div>
           <div id="app-toolbar-right">
             <paper-icon-button id="addBtn" icon="add" on-tap="promptAddServer" hidden$="[[shouldShowAddButton]]"></paper-icon-button>
