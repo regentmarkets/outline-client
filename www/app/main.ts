@@ -53,8 +53,6 @@ function createServerRepo(
     console.debug('Detected development environment, using fake servers.');
     if (repo.getAll().length === 0) {
       repo.add({name: 'Fake Working Server', host: '127.0.0.1'});
-      repo.add({name: 'Fake Broken Server', host: '192.0.2.1'});
-      repo.add({name: 'Fake Unreachable Server', host: '10.0.0.24'});
     }
   }
   return repo;
