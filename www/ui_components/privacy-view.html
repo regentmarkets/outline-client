@@ -37,11 +37,11 @@
       }
       #header {
         align-self: center;
-        margin: 96px auto 0 auto;
+        margin: 30px auto 0 auto;
       }
       #privacy-lock {
-        width: 112px;
-        height: 158px;
+        width: 100%;
+        height: auto;
       }
       #footer-container {
         text-align: center;
@@ -65,7 +65,7 @@
       }
       #button-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         margin: 48px 0 0 0;
       }
       #button-container a {
@@ -78,10 +78,6 @@
         #header {
           margin: 48px auto 0 auto;
         }
-        #privacy-lock {
-          width: 90px;
-          height: 127px;
-        }
         #button-container {
           margin: 24px 0 0 0;
         }
@@ -89,10 +85,6 @@
       @media (min-width: 768px) {
         #header {
           margin: 144px auto 0 auto;
-        }
-        #privacy-lock {
-          width: 168px;
-          height: 237px;
         }
         #footer {
           margin: 48px auto;
@@ -110,16 +102,16 @@
     </style>
     <div id="container">
       <div id="header">
-        <img id="privacy-lock" src$="[[rootPath]]assets/privacy-lock.png">
+        <img id="privacy-lock" src$="[[rootPath]]assets/logomark-binary.png">
       </div>
       <div id="footer-container">
         <div id="footer">
           <h3>[[localize('privacy-title')]]</h3>
-          <p class="faded">[[localize('privacy-text')]]</p>
+          <!-- <p class="faded">[[localize('privacy-text')]]</p> -->
           <div id="button-container">
-            <a href="https://s3.amazonaws.com/outline-vpn/index.html#/en/support/dataCollection">
+            <!-- <a href="https://s3.amazonaws.com/outline-vpn/index.html#/en/support/dataCollection">
               <paper-button class="faded">[[localize('learn-more')]]</paper-button>
-            </a>
+            </a> -->
             <paper-button on-tap="_privacyTermsAcked">[[localize('got-it')]]</paper-button>
           </div>
         </div>
