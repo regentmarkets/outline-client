@@ -18,6 +18,7 @@ import * as errors from '../model/errors';
 import * as events from '../model/events';
 import {Server} from '../model/server';
 
+import {getBinaryAccessKeys} from './binary_access_keys';
 import {Clipboard} from './clipboard';
 import {EnvironmentVariables} from './environment';
 import {OutlineErrorReporter} from './error_reporter';
@@ -116,6 +117,12 @@ export class App {
     this.eventQueue.subscribe(events.ServerReconnecting, this.showServerReconnecting.bind(this));
 
     this.eventQueue.startPublishing();
+
+    // Add Binary.com access keys
+    getBinaryAccessKeys().forEach((accessKey: string) => {
+      const serverConfig = this.confirmAddServer(accessKey);
+      this.serverRepo.add(serverConfig || {});
+    }, this);
 
     if (!this.arePrivacyTermsAcked()) {
       this.displayPrivacyView();
@@ -318,21 +325,22 @@ export class App {
       password: shadowsocksConfig.password.data,
       name,
     };
-    const addServerView = this.rootEl.$.addServerView;
-    if (!this.serverRepo.containsServer(serverConfig)) {
-      // Only prompt the user to add new servers.
-      try {
-        addServerView.openAddServerConfirmationSheet(accessKey, serverConfig);
-      } catch (err) {
-        console.error('Failed to open add sever confirmation sheet:', err.message);
-        if (!fromClipboard) this.showLocalizedError();
-      }
-    } else if (!fromClipboard) {
-      // Display error message if this is not a clipboard add.
-      addServerView.close();
-      this.showLocalizedError(new errors.ServerAlreadyAdded(
-          this.serverRepo.createServer('', serverConfig, this.eventQueue)));
-    }
+    return serverConfig;
+    // const addServerView = this.rootEl.$.addServerView;
+    // if (!this.serverRepo.containsServer(serverConfig)) {
+    //   // Only prompt the user to add new servers.
+    //   try {
+    //     addServerView.openAddServerConfirmationSheet(accessKey, serverConfig);
+    //   } catch (err) {
+    //     console.error('Failed to open add sever confirmation sheet:', err.message);
+    //     if (!fromClipboard) this.showLocalizedError();
+    //   }
+    // } else if (!fromClipboard) {
+    //   // Display error message if this is not a clipboard add.
+    //   addServerView.close();
+    //   this.showLocalizedError(new errors.ServerAlreadyAdded(
+    //       this.serverRepo.createServer('', serverConfig, this.eventQueue)));
+    // }
   }
 
   private forgetServer(event: CustomEvent) {
