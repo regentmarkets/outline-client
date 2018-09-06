@@ -51,9 +51,9 @@ function createServerRepo(
   const repo = new PersistentServerRepository(connectionType, eventQueue, storage);
   if (!deviceSupport) {
     console.debug('Detected development environment, using fake servers.');
-    if (repo.getAll().length === 0) {
-      repo.add({name: 'Fake Working Server', host: '127.0.0.1'});
-    }
+    // if (repo.getAll().length === 0) {
+    //   repo.add({name: 'Fake Working Server', host: '127.0.0.1'});
+    // }
   }
   return repo;
 }
