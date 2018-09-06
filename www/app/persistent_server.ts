@@ -53,7 +53,8 @@ export class PersistentServerRepository implements ServerRepository {
   add(serverConfig: {}) {
     const alreadyAddedServer = this.serverFromConfig(serverConfig);
     if (alreadyAddedServer) {
-      throw new ServerAlreadyAdded(alreadyAddedServer);
+      return;
+      // throw new ServerAlreadyAdded(alreadyAddedServer);
     }
     const server = this.createServer(uuid4(), serverConfig, this.eventQueue);
     this.serverById.set(server.id, server);
