@@ -80,7 +80,7 @@ export class App {
       console.warn('no urlInterceptor, ss:// urls will not be intercepted');
     }
 
-    this.clipboard.setListener(this.handleClipboardText.bind(this));
+    // this.clipboard.setListener(this.handleClipboardText.bind(this));
 
     this.updater.setListener(this.updateDownloaded.bind(this));
 
@@ -121,7 +121,7 @@ export class App {
       this.displayPrivacyView();
     }
     this.displayZeroStateUi();
-    this.pullClipboardText();
+    // this.pullClipboardText();
   }
 
   showLocalizedError(e?: Error, toastDuration = 10000) {
