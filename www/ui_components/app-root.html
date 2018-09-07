@@ -82,6 +82,7 @@
 
       app-toolbar [main-title] {
         flex: 2 1 100%;
+        padding-right: 55px;
       }
 
       app-toolbar img {
@@ -142,7 +143,7 @@
       }
 
       #logo {
-        width: 60px;
+        width: 160px;
         height: 60px;
         margin-top: 30px;
       }
@@ -211,8 +212,8 @@
           height: 180px;
         }
         #logo {
-          width: 68px;
-          height: 68px;
+          width: 160px;
+          height: 60px;
           margin-top: 56px;
         }
         #drawer-nav paper-item {
@@ -233,7 +234,7 @@
             <paper-icon-button id="backBtn" hidden$="[[!shouldShowBackButton]]" icon="arrow-back" on-tap="_goBack"></paper-icon-button>
           </div>
           <div main-title class$="[[page]]">
-            <img src$="[[rootPath]]assets/binary-logo.svg" hidden$="[[!shouldShowAppLogo]]">
+            <img src$="[[rootPath]]assets/binary-logo-vpn.svg" hidden$="[[!shouldShowAppLogo]]">
             <div hidden$="[[shouldShowAppLogo]]">[[localize(pageTitleKey)]]</div>
           </div>
           <!--<div id="app-toolbar-right">
@@ -289,14 +290,14 @@
       -->
 
       <div id="logo-nav">
-        <img src$="[[rootPath]]assets/logomark-binary.png" alt="logo" id="logo">
+        <img src$="[[rootPath]]assets/logomark-binary.svg" alt="logo" id="logo">
       </div>
       <hr class="nav-hr"></hr>
       <paper-listbox id="drawer-nav" selected="{{routeData.page}}" attr-for-selected="name" on-tap="closeDrawer">
-        <paper-icon-item name="servers">
+        <!-- <paper-icon-item name="servers">
           <iron-icon icon="outline-icons:outline" slot="item-icon"></iron-icon>
           <span class="item-label">[[localize('servers-menu-item')]]</span>
-        </paper-icon-item>
+        </paper-icon-item> -->
         <!-- <paper-icon-item name="feedback">
           <iron-icon id="feedback-icon" icon="feedback" slot="item-icon"></iron-icon>
           [[localize('submit-feedback')]]
