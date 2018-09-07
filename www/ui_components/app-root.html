@@ -48,10 +48,10 @@
   <template>
     <style>
       :host {
-        --app-toolbar-height: 40px;
-        --light-green: #2fbea5;
-        --medium-green: #009688;
-        --dark-green: #263238;
+        --app-toolbar-height: 45px;
+        --light-green: #5D6486;
+        --medium-green: #41486C;
+        --dark-green: #2a3052;
         --light-gray: #ECECEC;
         --paper-dialog-button-color: var(--medium-green);
         --app-drawer-width: 280px;
@@ -85,7 +85,7 @@
       }
 
       app-toolbar img {
-        height: 19px;
+        height: 35px;
         margin-top: 2px;
       }
 
@@ -233,12 +233,12 @@
             <paper-icon-button id="backBtn" hidden$="[[!shouldShowBackButton]]" icon="arrow-back" on-tap="_goBack"></paper-icon-button>
           </div>
           <div main-title class$="[[page]]">
-            <img src$="[[rootPath]]assets/outline-client-logo.svg" hidden$="[[!shouldShowAppLogo]]">
+            <img src$="[[rootPath]]assets/binary-logo.svg" hidden$="[[!shouldShowAppLogo]]">
             <div hidden$="[[shouldShowAppLogo]]">[[localize(pageTitleKey)]]</div>
           </div>
-          <div id="app-toolbar-right">
-            <paper-icon-button id="addBtn" icon="add" on-tap="promptAddServer" hidden$="[[!shouldShowAddButton]]"></paper-icon-button>
-          </div>
+          <!--<div id="app-toolbar-right">
+            <paper-icon-button id="addBtn" icon="add" on-tap="promptAddServer" hidden$="[[shouldShowAddButton]]"></paper-icon-button>
+          </div>-->
         </app-toolbar>
       </app-header>
 
@@ -289,7 +289,7 @@
       -->
 
       <div id="logo-nav">
-        <img src$="[[rootPath]]assets/logo-nav.png" alt="logo" id="logo">
+        <img src$="[[rootPath]]assets/logomark-binary.png" alt="logo" id="logo">
       </div>
       <hr class="nav-hr"></hr>
       <paper-listbox id="drawer-nav" selected="{{routeData.page}}" attr-for-selected="name" on-tap="closeDrawer">
@@ -297,24 +297,24 @@
           <iron-icon icon="outline-icons:outline" slot="item-icon"></iron-icon>
           <span class="item-label">[[localize('servers-menu-item')]]</span>
         </paper-icon-item>
-        <paper-icon-item name="feedback">
+        <!-- <paper-icon-item name="feedback">
           <iron-icon id="feedback-icon" icon="feedback" slot="item-icon"></iron-icon>
           [[localize('submit-feedback')]]
-        </paper-icon-item>
-        <paper-icon-item name="about">
+        </paper-icon-item> -->
+        <!-- <paper-icon-item name="about">
           <iron-icon icon="info" slot="item-icon"></iron-icon>
           [[localize('about-page-title')]]
-        </paper-icon-item>
-        <paper-icon-item name="help" class$="[[_computeIsLastVisibleMenuItem(shouldShowQuitButton)]]">
+        </paper-icon-item> -->
+        <!-- <paper-icon-item name="help" class$="[[_computeIsLastVisibleMenuItem(shouldShowQuitButton)]]">
           <a href="https://s3.amazonaws.com/outline-vpn/index.html#/support" id="helpAnchor" hidden></a>
           <iron-icon icon="help" slot="item-icon"></iron-icon>
           [[localize('help-page-title')]]
-        </paper-icon-item>
+        </paper-icon-item> -->
         <paper-icon-item name="quit" class="last-menu-item"  hidden$="[[!shouldShowQuitButton]]">
           <iron-icon icon="cancel" slot="item-icon"></iron-icon>
           [[localize('quit')]]
         </paper-icon-item>
-        <paper-item class="border-top">
+        <!-- <paper-item class="border-top">
           <a href="https://www.google.com/policies/privacy/">[[localize('privacy')]]</a>
         </paper-item>
         <paper-item>
@@ -322,7 +322,7 @@
         </paper-item>
         <paper-item>
            <a href="https://s3.amazonaws.com/outline-vpn/static_downloads/Outline-Terms-of-Service.html">[[localize('terms')]]</a>
-        </paper-item>
+        </paper-item> -->
         <paper-item name="licenses">
            <span>[[localize('licenses-page-title')]]</span>
         </paper-item>
