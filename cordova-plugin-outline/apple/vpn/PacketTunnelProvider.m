@@ -56,7 +56,7 @@ NSString *const kMessageKeyOnDemand = @"is-on-demand";
 #if TARGET_OS_IPHONE
   NSString *appGroup = @"group.org.outline.ios.client";
 #else
-  NSString *appGroup = @"QT8Z3Q9V3A.org.outline.macos.client";
+  NSString *appGroup = @"36S5Q8S4V5.com.binary.outline.macos.client";
 #endif
   NSURL *containerUrl = [[NSFileManager defaultManager]
                          containerURLForSecurityApplicationGroupIdentifier:appGroup];
