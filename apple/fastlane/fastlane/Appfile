@@ -21,5 +21,5 @@ for_platform :ios do
 end
 
 for_platform :osx do
-  app_identifier "org.outline.macos.client"
+  app_identifier "com.binary.outline.macos.client"
 end
