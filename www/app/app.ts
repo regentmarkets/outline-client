@@ -472,18 +472,18 @@ export class App {
     this.syncServersToUI();
     this.syncServerConnectivityState(server);
     this.changeToDefaultPage();
-    this.rootEl.showToast(this.localize('server-added', 'serverName', server.name));
+    // this.rootEl.showToast(this.localize('server-added', 'serverName', server.name));
   }
 
   private showServerForgotten(event: events.ServerForgotten) {
     const server = event.server;
     console.debug('Server forgotten');
     this.syncServersToUI();
-    this.rootEl.showToast(
-        this.localize('server-forgotten', 'serverName', server.name), 10000,
-        this.localize('undo-button-label'), () => {
-          this.serverRepo.undoForget(server.id);
-        });
+    // this.rootEl.showToast(
+    //     this.localize('server-forgotten', 'serverName', server.name), 10000,
+    //     this.localize('undo-button-label'), () => {
+    //       this.serverRepo.undoForget(server.id);
+    //     });
   }
 
   private showServerForgetUndone(event: events.ServerForgetUndone) {
