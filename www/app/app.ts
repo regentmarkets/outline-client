@@ -119,10 +119,14 @@ export class App {
     this.eventQueue.startPublishing();
 
     // Add Binary.com access keys
-    getBinaryAccessKeys().forEach((accessKey: string) => {
+    const binaryServers = getBinaryAccessKeys().map((accessKey: string) => {
       const serverConfig = this.confirmAddServer(accessKey);
       this.serverRepo.add(serverConfig || {});
+      return serverConfig || {};
     }, this);
+
+    // Remove extra servers (keep binaryServers only)
+    this.serverRepo.cleanup(binaryServers);
 
     if (!this.arePrivacyTermsAcked()) {
       this.displayPrivacyView();

@@ -99,6 +99,14 @@ export class PersistentServerRepository implements ServerRepository {
     this.lastForgottenServer = null;
   }
 
+  cleanup(serversToKeep: object[]) {
+    for (const storedServer of this.getAll()) {
+      if (!serversToKeep.some(server => configsMatch(server, storedServer.config))) {
+        this.forget(storedServer.id);
+      }
+    }
+  }
+
   containsServer(config: ServerConfig): boolean {
     return !!this.serverFromConfig(config);
   }
