@@ -8,18 +8,18 @@ We recommend that you develop OS X specific functionality in the `platforms/osx`
 
 To run the project in XCode:
 
-* open `platforms/osx/Outline.xcodeproj`
+* Open `platforms/osx/BinaryVPN.xcodeproj`
 * Make sure you are logged into your Apple Developer account.  Go to Preferences → Accounts, make sure your account is set.
-* Click "Outline" in the left navigation bar:
-  * Under "Signing" select "Jigsaw Operations LLC"
+* Click "BinaryVPN" in the left navigation bar:
+  * Under "Signing" select "Binary Investments (Europe) Ltd"
   * Click Register Device - needed the first time running the app on a new device.
 * Hit Cmd+R to run
 
-The main entry point for Apple specific code is `Outline/Plugins/OutlinePlugin.swift`
+The main entry point for Apple specific code is `BinaryVPN/Plugins/OutlinePlugin.swift`
 
 ## To debug the VpnExtension process
 
-* VpnExtension runs in a separate process and its output is not logged to the Xcode console. To view its log statements, open the Console.app and filter messages that contain "Outline" or “VpnExtension”.
+* VpnExtension runs in a separate process and its output is not logged to the Xcode console. To view its log statements, open the Console.app and filter messages that contain "BinaryVPN" or “VpnExtension”.
 * In XCode, click top Debug menu → Attach to Process → VpnExtension
   * This can only be done once the VPN Extension is running (after you are connected).
   * [Detailed instructions](https://developer.apple.com/library/content/documentation/General/Conceptual/ExtensibilityPG/ExtensionCreation.html#//apple_ref/doc/uid/TP40014214-CH5-SW8).
@@ -42,7 +42,7 @@ If you cannot connect to a server due to a VPN error:
   * `com.binary.outline.osx.client.VpnExtension(0.1.2) 970A0E28-06F0-4658-A194-EE755155644C  2018-01-26 21:51:06 +0000 /Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/Outline.app/Contents/PlugIns/VpnExtension.appex`
 * To learn the path of your VpnExtension:
   * In XCode, click on the Folder Icon (top left), then navigate to the Products folder
-  * Drag the "Outline.app" item to the terminal - this will tell you the path of the app, something like `/Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/Outline.app/`
-  * In that directory, look for `Contents/PlugIns/VpnExtension.appex/`, e.g. `/Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/Outline.app/Contents/PlugIns/VpnExtension.appex/`
-* In the terminal, run pluginkit -a <your appex file>, e.g. `pluginkit -a /Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/Outline.app/Contents/PlugIns/VpnExtension.appex/`
+  * Drag the "BinaryVPN.app" item to the terminal - this will tell you the path of the app, something like `/Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/BinaryVPN.app/`
+  * In that directory, look for `Contents/PlugIns/VpnExtension.appex/`, e.g. `/Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/BinaryVPN.app/Contents/PlugIns/VpnExtension.appex/`
+* In the terminal, run pluginkit -a <your appex file>, e.g. `pluginkit -a /Users/$USER/Library/Developer/Xcode/DerivedData/Outline-buohazzevizjuxclukgvoyyvsonu/Build/Products/Debug/BinaryVPN.app/Contents/PlugIns/VpnExtension.appex/`
 * Open Mac Settings → Network, then delete the Outline network

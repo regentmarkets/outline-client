@@ -48,7 +48,7 @@ def configure_environment(local)
 end
 
 def build_outline
-  build_app(scheme: "Outline", export_xcargs: "-allowProvisioningUpdates")
+  build_app(scheme: "BinaryVPN", export_xcargs: "-allowProvisioningUpdates")
 end
 
 platform :ios do
