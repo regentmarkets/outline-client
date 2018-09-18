@@ -17,7 +17,7 @@ def configure_travis_environment
   setup_travis
   # Retrieve signing credentials and provisioning profiles.
   match(type: "appstore", readonly: true,
-        app_identifier: ["org.outline.ios.client", "org.outline.ios.client.VpnExtension"])
+        app_identifier: ["com.binary.outline.ios.client", "com.binary.outline.ios.client.VpnExtension"])
 
   xcodeproj = "Outline.xcodeproj"
   disable_automatic_code_signing(path: xcodeproj)
@@ -34,7 +34,7 @@ def configure_travis_environment
 end
 
 def configure_local_environment
-  automatic_code_signing(use_automatic_signing: true, team_id: "QT8Z3Q9V3A",
+  automatic_code_signing(use_automatic_signing: true, team_id: "36S5Q8S4V5",
                          code_sign_identity: "iPhone Developer")
 end
 

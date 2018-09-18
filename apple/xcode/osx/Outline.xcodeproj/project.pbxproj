@@ -465,7 +465,7 @@
 				ORGANIZATIONNAME = __CDV_ORGANIZATION_NAME__;
 				TargetAttributes = {
 					70BD682218FFB02D00A1EFCF = {
-						DevelopmentTeam = QT8Z3Q9V3A;
+						DevelopmentTeam = 36S5Q8S4V5;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -485,7 +485,7 @@
 					};
 					FC0799E52037532900A1C822 = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = QT8Z3Q9V3A;
+						DevelopmentTeam = 36S5Q8S4V5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -495,7 +495,7 @@
 					};
 					FC5FF92A1F3E1E5F0032A745 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = QT8Z3Q9V3A;
+						DevelopmentTeam = 36S5Q8S4V5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -763,7 +763,7 @@
 				CODE_SIGN_ENTITLEMENTS = Outline/Outline.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = QT8Z3Q9V3A;
+				DEVELOPMENT_TEAM = 36S5Q8S4V5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Outline/Plugins/cordova-plugin-outline",
@@ -797,7 +797,7 @@
 				CODE_SIGN_ENTITLEMENTS = Outline/Outline.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = QT8Z3Q9V3A;
+				DEVELOPMENT_TEAM = 36S5Q8S4V5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Outline/Plugins/cordova-plugin-outline",
@@ -845,7 +845,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = QT8Z3Q9V3A;
+				DEVELOPMENT_TEAM = 36S5Q8S4V5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -889,7 +889,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QT8Z3Q9V3A;
+				DEVELOPMENT_TEAM = 36S5Q8S4V5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -922,7 +922,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = QT8Z3Q9V3A;
+				DEVELOPMENT_TEAM = 36S5Q8S4V5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -955,7 +955,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QT8Z3Q9V3A;
+				DEVELOPMENT_TEAM = 36S5Q8S4V5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
