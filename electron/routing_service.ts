@@ -95,7 +95,7 @@ export class WindowsRoutingService implements RoutingService {
         if (netErr.errno === 'ENOENT') {
           console.info(`Routing service not running. Attempting to start.`);
           // Prompt the user for admin permissions to start the routing service.
-          sudo.exec(SERVICE_START_COMMAND, {name: 'Outline'}, (sudoError, stdout, stderr) => {
+          sudo.exec(SERVICE_START_COMMAND, {name: 'Binary-com-VPN'}, (sudoError, stdout, stderr) => {
             if (sudoError) {
               // Yes, this seems to be the only way to tell.
               if ((typeof sudoError === 'string') &&
