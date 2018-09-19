@@ -224,7 +224,7 @@ class OutlineVpn: NSObject {
       } else {
         let config = NETunnelProviderProtocol()
         config.providerBundleIdentifier = OutlineVpn.kVpnExtensionBundleId
-        config.serverAddress = "Outline"
+        config.serverAddress = "BinaryVPN"
 
         manager = NETunnelProviderManager()
         manager.protocolConfiguration = config
