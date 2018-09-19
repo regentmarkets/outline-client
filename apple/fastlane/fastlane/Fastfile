@@ -19,7 +19,7 @@ def configure_travis_environment
   match(type: "appstore", readonly: true,
         app_identifier: ["com.binary.outline.ios.client", "com.binary.outline.ios.client.VpnExtension"])
 
-  xcodeproj = "Outline.xcodeproj"
+  xcodeproj = "BinaryVPN.xcodeproj"
   disable_automatic_code_signing(path: xcodeproj)
   update_project_provisioning(
       xcodeproj: xcodeproj,
