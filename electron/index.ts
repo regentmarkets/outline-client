@@ -128,7 +128,7 @@ function createTrayIcon(status: ConnectionStatus) {
         mainWindow.hide();
       }
     });
-    tray.setToolTip('Outline');
+    tray.setToolTip('Binary.com VPN');
   }
   const menuTemplate = [
     {label: `Status: ${isConnected ? 'Connected' : 'Disconnected'}`, enabled: false},
