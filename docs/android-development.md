@@ -26,4 +26,4 @@ Using Android Studio
 
 * Open existing project → <root_project_dir>/platforms/android
 * Click on "Android Monitor" at the bottom
-* Make sure org.outline.android.client is selected from the middle menu (it should not say "no debuggable processes")
+* Make sure com.binary.outline.android.client is selected from the middle menu (it should not say "no debuggable processes")
