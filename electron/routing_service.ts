@@ -105,7 +105,7 @@ export class WindowsRoutingService implements RoutingService {
       this.ipcConnection.on('error', (e: NetError) => {
         if (retry) {
           console.info(`bouncing OutlineService (${e.errno})`);
-          sudo.exec(SERVICE_START_COMMAND, {name: 'Outline'}, (sudoError, stdout, stderr) => {
+          sudo.exec(SERVICE_START_COMMAND, {name: 'Binary.com VPN'}, (sudoError, stdout, stderr) => {
             if (sudoError) {
               // Yes, this seems to be the only way to tell.
               if ((typeof sudoError === 'string') &&
