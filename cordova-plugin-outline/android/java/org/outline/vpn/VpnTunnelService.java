@@ -15,6 +15,8 @@
 package org.outline.vpn;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +28,7 @@ import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.net.VpnService;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import java.util.concurrent.Callable;
@@ -50,6 +53,7 @@ public class VpnTunnelService extends VpnService {
   private static final int THREAD_POOL_SIZE = 5;
   private static final int NOTIFICATION_SERVICE_ID = 1;
   private static final int NOTIFICATION_COLOR = 0x00BFA5;
+  private static final String NOTIFICATION_CHANNEL_ID = "outline-vpn";
   private static final String CONNECTION_ID_KEY = "id";
   private static final String CONNECTION_CONFIG_KEY = "config";
 
@@ -60,6 +64,7 @@ public class VpnTunnelService extends VpnService {
   private String activeConnectionId = null;
   private NetworkConnectivityMonitor networkConnectivityMonitor;
   private VpnConnectionStore connectionStore;
+  private Notification.Builder notificationBuilder;
 
   public class LocalBinder extends Binder {
     public VpnTunnelService getService() {
@@ -184,9 +189,11 @@ public class VpnTunnelService extends VpnService {
         return;
       }
       startNetworkConnectivityMonitor();
+    } else {
+      removePersistentNotification();
     }
     broadcastVpnStart(OutlinePlugin.ErrorCode.NO_ERROR);
-    displayPersistentNotification(config);
+    displayPersistentNotification(config, OutlinePlugin.ConnectionStatus.CONNECTED);
     storeActiveConnection(config);
   }
 
@@ -354,6 +361,12 @@ public class VpnTunnelService extends VpnService {
         return;
       }
       broadcastVpnConnectivityChange(OutlinePlugin.ConnectionStatus.CONNECTED);
+      displayPersistentNotification(null, OutlinePlugin.ConnectionStatus.CONNECTED);
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        // Indicate that traffic will be sent over the current active network.
+        setUnderlyingNetworks(new Network[] {network});
+      }
     }
 
     @Override
@@ -366,6 +379,11 @@ public class VpnTunnelService extends VpnService {
         return;
       }
       broadcastVpnConnectivityChange(OutlinePlugin.ConnectionStatus.RECONNECTING);
+      displayPersistentNotification(null, OutlinePlugin.ConnectionStatus.RECONNECTING);
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        setUnderlyingNetworks(null);
+      }
     }
 
     // Returns whether the underlying networks of NetworkInfo objects are equal.
@@ -475,30 +493,54 @@ public class VpnTunnelService extends VpnService {
   // Notifications
 
   /* Displays a persistent notification that sets a pending intent to open the app. */
-  private void displayPersistentNotification(final JSONObject serverConfig) {
+  private void displayPersistentNotification(
+      final JSONObject serverConfig, OutlinePlugin.ConnectionStatus status) {
     try {
-      Intent launchIntent = new Intent(this, getPackageMainActivityClass());
-      PendingIntent mainActivityIntent =
-          PendingIntent.getActivity(this, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-      Notification.Builder builder =
-          new Notification.Builder(this)
-              .setContentTitle(getServerName(serverConfig))
-              .setContentText("Connected")
-              .setSmallIcon(getResourceIdForDrawable("small_icon"))
-              .setColor(NOTIFICATION_COLOR)
-              .setVisibility(Notification.VISIBILITY_SECRET) // Don't display in lock screen
-              .setContentIntent(mainActivityIntent)
-              .setShowWhen(true)
-              .setUsesChronometer(true);
-      startForeground(NOTIFICATION_SERVICE_ID, builder.getNotification());
+      if (notificationBuilder == null) {
+        // Cache the notification builder so we can update the existing notification - creating a
+        // new notification has the side effect of reseting the connection timer.
+        notificationBuilder = getNotificationBuilder(serverConfig);
+      }
+      final String statusStringResourceId = status == OutlinePlugin.ConnectionStatus.CONNECTED
+          ? "connected_server_state"
+          : "reconnecting_server_state";
+      notificationBuilder.setContentText(getStringResource(statusStringResourceId));
+      startForeground(NOTIFICATION_SERVICE_ID, notificationBuilder.getNotification());
     } catch (Exception e) {
       LOG.warning("Unable to display persistent notification");
     }
   }
 
+  /* Returns a notification builder with the provided server configuration.  */
+  private Notification.Builder getNotificationBuilder(final JSONObject serverConfig)
+      throws Exception {
+    Intent launchIntent = new Intent(this, getPackageMainActivityClass());
+    PendingIntent mainActivityIntent =
+        PendingIntent.getActivity(this, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    Notification.Builder builder;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      NotificationChannel channel = new NotificationChannel(
+          NOTIFICATION_CHANNEL_ID, "Outline", NotificationManager.IMPORTANCE_LOW);
+      NotificationManager notificationManager = getSystemService(NotificationManager.class);
+      notificationManager.createNotificationChannel(channel);
+      builder = new Notification.Builder(this, NOTIFICATION_CHANNEL_ID);
+    } else {
+      builder = new Notification.Builder(this);
+    }
+    return builder.setContentTitle(getServerName(serverConfig))
+        .setSmallIcon(getResourceIdForDrawable("small_icon"))
+        .setColor(NOTIFICATION_COLOR)
+        .setVisibility(Notification.VISIBILITY_SECRET) // Don't display in lock screen
+        .setContentIntent(mainActivityIntent)
+        .setShowWhen(true)
+        .setUsesChronometer(true);
+  }
+
   /* Removes a persistent notification from the notifications dropdown. */
   private void removePersistentNotification() {
     stopForeground(true /* remove notification */);
+    notificationBuilder = null;
   }
 
   /* Retrieves the MainActivity class from the application package. */
@@ -547,5 +589,10 @@ public class VpnTunnelService extends VpnService {
     PackageManager packageManager = getApplicationContext().getPackageManager();
     ApplicationInfo appInfo = packageManager.getApplicationInfo(getPackageName(), 0);
     return (String) packageManager.getApplicationLabel(appInfo);
+  }
+
+  /* Retrieves a localized string by id from the application's resources. */
+  private String getStringResource(final String resourceId) {
+    return getString(getResources().getIdentifier(resourceId, "string", getPackageName()));
   }
 }

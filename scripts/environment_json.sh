@@ -64,11 +64,11 @@ EOM
 }
 
 function pull_from_ios_plist() {
-  pull_from_plist "apple/xcode/ios/Outline/Outline-Info.plist" $1
+  pull_from_plist "apple/xcode/ios/BinaryVPN/BinaryVPN-Info.plist" $1
 }
 
 function pull_from_osx_plist() {
-  pull_from_plist "apple/xcode/osx/Outline/Outline-Info.plist" $1
+  pull_from_plist "apple/xcode/osx/BinaryVPN/BinaryVPN-Info.plist" $1
 }
 
 case $PLATFORM in

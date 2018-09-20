@@ -36,7 +36,7 @@ class OutlinePlugin: CDVPlugin {
 
 #if os(macOS)
   // cordova-osx does not support URL interception. Until it does, we have version-controlled
-  // AppDelegate.m (intercept) and Outline-Info.plist (register protocol) to handle ss:// URLs.
+  // AppDelegate.m (intercept) and BinaryVPN-Info.plist (register protocol) to handle ss:// URLs.
   private var urlHandler: CDVMacOsUrlHandler?
   private static let kPlatform = "macOS"
 #else

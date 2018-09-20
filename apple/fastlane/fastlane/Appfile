@@ -14,10 +14,10 @@
 
 apple_id "outline-app-manager@google.com" # Apple developer account email address
 itc_team_id "118880544" # iTunes Connect Team ID
-team_id "QT8Z3Q9V3A" # Developer Portal Team ID
+team_id "36S5Q8S4V5" # Developer Portal Team ID
 
 for_platform :ios do
-  app_identifier "org.outline.ios.client"
+  app_identifier "com.binary.outline.ios.client"
 end
 
 for_platform :osx do

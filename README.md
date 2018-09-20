@@ -26,7 +26,7 @@ UI components are located in [www/ui_components](www/ui_components).  The app lo
 Additional requirements for Android:
 
 * Android Studio
-* Android SDK 23
+* Android SDK 26
 
 To build for android, run:
 
@@ -55,7 +55,7 @@ A Docker image with all pre-requisites for Android builds is included.  To build
 
 Additional requirements for Apple:
 
-* An Apple Developer Account.  You will need to be invited to join the "Jigsaw Operations LLC" team
+* An Apple Developer Account.  You will need to be invited to join the "Binary Investments (Europe) Ltd" team
 * XCode 9+ ([download](https://developer.apple.com/xcode/))
 * XCode command line tools
 
