@@ -18,7 +18,7 @@
                BlueprintIdentifier = "3B0347471F212F0100C8EF1F"
                BuildableName = "VpnExtension.appex"
                BlueprintName = "VpnExtension"
-               ReferencedContainer = "container:Outline.xcodeproj">
+               ReferencedContainer = "container:BinaryVPN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "Outline.app"
-               BlueprintName = "Outline"
-               ReferencedContainer = "container:Outline.xcodeproj">
+               BuildableName = "BinaryVPN.app"
+               BlueprintName = "BinaryVPN"
+               ReferencedContainer = "container:BinaryVPN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,7 +51,7 @@
             BlueprintIdentifier = "3B0347471F212F0100C8EF1F"
             BuildableName = "VpnExtension.appex"
             BlueprintName = "VpnExtension"
-            ReferencedContainer = "container:Outline.xcodeproj">
+            ReferencedContainer = "container:BinaryVPN.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -74,9 +74,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "Outline.app"
-            BlueprintName = "Outline"
-            ReferencedContainer = "container:Outline.xcodeproj">
+            BuildableName = "BinaryVPN.app"
+            BlueprintName = "BinaryVPN"
+            ReferencedContainer = "container:BinaryVPN.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "Outline.app"
-            BlueprintName = "Outline"
-            ReferencedContainer = "container:Outline.xcodeproj">
+            BuildableName = "BinaryVPN.app"
+            BlueprintName = "BinaryVPN"
+            ReferencedContainer = "container:BinaryVPN.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

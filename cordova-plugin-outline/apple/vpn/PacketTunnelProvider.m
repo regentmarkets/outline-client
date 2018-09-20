@@ -54,7 +54,7 @@ NSString *const kMessageKeyOnDemand = @"is-on-demand";
 - (id)init {
   self = [super init];
 #if TARGET_OS_IPHONE
-  NSString *appGroup = @"group.org.outline.ios.client";
+  NSString *appGroup = @"group.com.binary.outline.ios.client";
 #else
   NSString *appGroup = @"36S5Q8S4V5.com.binary.outline.macos.client";
 #endif
