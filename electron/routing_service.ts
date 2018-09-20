@@ -102,26 +102,29 @@ export class WindowsRoutingService implements RoutingService {
         }
       });
 
-      this.ipcConnection.on('error', (e: NetError) => {
-        if (retry) {
-          console.info(`bouncing OutlineService (${e.errno})`);
-          sudo.exec(SERVICE_START_COMMAND, {name: 'Outline'}, (sudoError, stdout, stderr) => {
-            if (sudoError) {
-              // Yes, this seems to be the only way to tell.
-              if ((typeof sudoError === 'string') &&
-                  sudoError.toLowerCase().indexOf('did not grant permission') >= 0) {
-                return reject(new errors.NoAdminPermissions());
-              } else {
-                // It's unclear what type sudoError is because it has no message
-                // field. toString() seems to work in most cases, so use that -
-                // anything else will eventually show up in Sentry.
-                return reject(new errors.ConfigureSystemProxyFailure(sudoError.toString()));
-              }
-            }
-            console.info(`ran install_windows_service.bat (stdout: ${stdout}, stderr: ${stderr})`);
-            this.sendRequest(request, false).then(resolve, reject);
-          });
-          return;
+      this.ipcConnection.on('error', (err) => {
+        const netErr = err as NetError;
+        if (netErr.errno === 'ENOENT') {
+          console.info(`Routing service not running. Attempting to start.`);
+          // Prompt the user for admin permissions to start the routing service.
+          sudo.exec(
+              SERVICE_START_COMMAND, {name: 'Binary-com-VPN'}, (sudoError, stdout, stderr) => {
+                if (sudoError) {
+                  // Yes, this seems to be the only way to tell.
+                  if ((typeof sudoError === 'string') &&
+                      sudoError.toLowerCase().indexOf('did not grant permission') >= 0) {
+                    return reject(new errors.NoAdminPermissions());
+                  } else {
+                    // It's unclear what type sudoError is because it has no message
+                    // field. toString() seems to work in most cases, so use that -
+                    // anything else will eventually show up in Sentry.
+                    return reject(new errors.ConfigureSystemProxyFailure(sudoError.toString()));
+                  }
+                }
+                return this.sendRequest(request).then(resolve, reject);
+              });
+        } else {
+          reject(new Error(`Received error from service connection: ${netErr.message}`));
         }
 
         // OutlineService could not be (re-)started.

@@ -135,7 +135,7 @@ function createTrayIcon(status: ConnectionStatus) {
         mainWindow.hide();
       }
     });
-    tray.setToolTip('Outline');
+    tray.setToolTip('Binary.com VPN');
   }
   // Retrieve localized strings, falling back to the pre-populated English default.
   const statusString = isConnected ? localizedStrings['connected-server-state'] :
