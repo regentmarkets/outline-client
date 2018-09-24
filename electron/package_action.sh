@@ -16,8 +16,6 @@
 
 yarn do electron/build
 
-cp package.json build/windows/
-
 # Environment variables.
 scripts/environment_json.sh -p windows > build/windows/www/environment.json
 # TODO: Share code with environment_json.sh (this is the dev/debug Sentry DSN).
@@ -47,4 +45,4 @@ electron-builder \
   --config.win.icon=icons/win/icon.ico \
   --config.nsis.perMachine=true \
   --config.nsis.include=electron/custom_install_steps.nsh \
-  --config.nsis.artifactName='Outline-Client.${ext}'
+  --config.nsis.artifactName='BinaryVPN.${ext}'
