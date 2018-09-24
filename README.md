@@ -73,6 +73,6 @@ To learn more about developing for Apple, see [docs/apple-development](docs/appl
 
 To build for Windows, run:
 
-    yarn do electron/build
+    yarn do electron/package
 
 Unlike the Android and Apple clients, the Windows build uses the Electron framework, rather than Cordova.
