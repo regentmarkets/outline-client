@@ -53,4 +53,4 @@ electron-builder \
   --config.win.certificateSubjectName='Jigsaw Operations LLC' \
   --config.nsis.perMachine=true \
   --config.nsis.include=electron/custom_install_steps.nsh \
-  --config.nsis.artifactName='Outline-Client.${ext}'
+  --config.nsis.artifactName='BinaryVPN.${ext}'
