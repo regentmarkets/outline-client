@@ -46,7 +46,7 @@
     "electron": "^1.8.6",
     "electron-builder": "^20.13.3",
     "electron-icon-maker": "^0.0.4",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-babel": "^7.0.0",
     "gulp-if": "^2.0.2",
     "gulp-posthtml": "^3.0.4",
@@ -61,7 +61,7 @@
     "tsify": "^2.0.8",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2",
-    "vinyl-source-stream": "^1.1.0",
+    "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.9.0",
     "xml2js": "^0.4.17"
   },
