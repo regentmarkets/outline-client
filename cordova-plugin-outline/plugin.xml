@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-outline" version="1.0.0">
+        id="cordova-plugin-outline" version="0.0.0">
   <name>Outline Cordova Plugin</name>
   <description>Native plugin for the Outline app</description>
   <license>Apache 2.0</license>
@@ -24,6 +24,8 @@
     <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest">
       <uses-permission android:name="android.permission.INTERNET" />
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
       <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     </config-file>
 
@@ -92,6 +94,7 @@
       target-dir="app/src/main/jniLibs/x86_64" />
 
     <resource-file src="android/resources/small_icon.png" target="res/drawable/small_icon.png" />
+    <resource-file src="android/resources/bypass_subnets.xml" target="res/values/bypass_subnets.xml" />
     <resource-file src="android/resources/strings/" target="res/" />
 
     <framework src="android/java/build-extras.gradle" custom="true"
