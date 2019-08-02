@@ -331,6 +331,7 @@ export class App {
       password: shadowsocksConfig.password.data,
       name,
     };
+    return serverConfig;
     // if (!this.serverRepo.containsServer(serverConfig)) {
     //   // Only prompt the user to add new servers.
     //   try {
