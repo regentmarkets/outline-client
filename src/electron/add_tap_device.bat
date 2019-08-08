@@ -135,9 +135,9 @@ if %errorlevel% neq 0 (
 :: "own" set of DNS servers. Windows seems to use the DNS server(s) of the
 :: network device associated with the default gateway. This is good for us
 :: as it means we do not have to modify the DNS settings of any other network
-:: device in the system. Configure with OpenDNS and Dyn resolvers.
+:: device in the system. Configure with Cloudflare resolvers.
 echo Configuring primary DNS...
-netsh interface ip set dnsservers %DEVICE_NAME% static address=208.67.222.222
+netsh interface ip set dnsservers %DEVICE_NAME% static address=1.1.1.1
 if %errorlevel% neq 0 (
   echo Could not configure TAP device primary DNS. >&2
   exit /b 1
@@ -148,4 +148,4 @@ if %errorlevel% neq 0 (
   echo Could not configure TAP device secondary DNS. >&2
   exit /b 1
 )
-echo TAP network device added and configured successfully 
+echo TAP network device added and configured successfully
