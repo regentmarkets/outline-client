@@ -2,22 +2,16 @@
 <resources>
   <string-array name="reserved_bypass_subnets" translatable="false">
     <!-- shop.binary.com -->
-    <item>23.227.38.0/24</item>
+    <item>23.227.38.64/32</item>
     <!-- cashier.binary.com -->
-    <item>69.16.238.0/24</item>
+    <item>69.16.238.161/32</item>
     <!-- bot.binary.com, charts.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com -->
-    <item>104.18.96.0/24</item>
-    <!-- bot.binary.com, charts.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com -->
-    <item>104.18.97.0/24</item>
+    <item>104.18.97.31/32</item>
     <!-- www.binary.bot -->
-    <item>104.27.140.0/24</item>
-    <!-- www.binary.bot -->
-    <item>104.27.141.0/24</item>
+    <item>104.27.140.222/32</item>
     <!-- deriv.app -->
-    <item>104.31.82.0/24</item>
-    <!-- deriv.app -->
-    <item>104.31.83.0/24</item>
+    <item>104.31.82.94/32</item>
     <!-- deriv.com -->
-    <item>178.128.123.0/24</item>
+    <item>178.128.115.5/32</item>
   </string-array>
 </resources>
