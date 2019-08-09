@@ -326,8 +326,8 @@ static NSDictionary *kVpnSubnetCandidates;  // Subnets to bind the VPN.
       [[NEPacketTunnelNetworkSettings alloc] initWithTunnelRemoteAddress:self.hostNetworkAddress];
   settings.IPv4Settings = ipv4Settings;
   settings.IPv6Settings = ipv6Settings;
-  // Configure with Cloudflare DNS resolver addresses.
-  settings.DNSSettings = [[NEDNSSettings alloc] initWithServers:@[ @"1.1.1.1", @"1.0.0.1" ]];
+  // Configure with Binary DNS resolver addresses.
+  settings.DNSSettings = [[NEDNSSettings alloc] initWithServers:@[ @"54.254.147.87" ]];
   return settings;
 }
 

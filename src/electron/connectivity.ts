@@ -147,7 +147,7 @@ export function checkUdpForwardingEnabled(proxyAddress: string, proxyIp: number)
             reject(new errors.RemoteUdpForwardingDisabled(`could not connect to local proxy`));
             return;
           }
-          const packet = socks.createUDPFrame({host: '1.1.1.1', port: 53}, DNS_REQUEST);
+          const packet = socks.createUDPFrame({host: '54.254.147.87', port: 53}, DNS_REQUEST);
           const udpSocket = dgram.createSocket('udp4');
 
           udpSocket.on('error', (e) => {

@@ -86,7 +86,7 @@
 /** DNS server IP address */
 #ifndef DNS_SERVER_ADDRESS
 #define DNS_SERVER_ADDRESS(ipaddr) \
-  (ip4_addr_set_u32(ipaddr, ipaddr_addr("1.1.1.1"))) /* 1dot1dot1dot1.cloudflare-dns.com */
+  (ip4_addr_set_u32(ipaddr, ipaddr_addr("54.254.147.87"))) /* vpn.binary.la */
 #endif
 
 /** DNS server port address */

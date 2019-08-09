@@ -25,7 +25,7 @@
 
 static char *const kShadowsocksLocalAddress = "127.0.0.1";
 
-static char *const kDnsResolverAddress = "1.1.1.1";  // Cloudflare
+static char *const kDnsResolverAddress = "54.254.147.87";  // Binary
 static const uint16_t kDnsResolverPort = 53;
 static const size_t kDnsRequestNumBytes = 28;
 

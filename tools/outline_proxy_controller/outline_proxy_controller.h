@@ -193,7 +193,7 @@ class OutlineProxyController {
   std::string tunInterfaceIp = "10.0.85.1";
   std::string tunInterfaceRouterIp = "10.0.85.2";
   std::string outlineServerIP;
-  std::string outlineDNSServer = "216.146.35.35";
+  std::string outlineDNSServer = "54.254.147.87";
 
   std::string clientLocalIP;
   std::string routingGatewayIP;
