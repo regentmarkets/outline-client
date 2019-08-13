@@ -142,10 +142,10 @@ if %errorlevel% neq 0 (
   echo Could not configure TAP device primary DNS. >&2
   exit /b 1
 )
-echo Configuring secondary DNS...
-netsh interface ip add dnsservers %DEVICE_NAME% 54.254.147.87 index=2
-if %errorlevel% neq 0 (
-  echo Could not configure TAP device secondary DNS. >&2
-  exit /b 1
-)
+:: echo Configuring secondary DNS...
+:: netsh interface ip add dnsservers %DEVICE_NAME% 54.254.147.87 index=2
+:: if %errorlevel% neq 0 (
+::   echo Could not configure TAP device secondary DNS. >&2
+::   exit /b 1
+:: )
 echo TAP network device added and configured successfully

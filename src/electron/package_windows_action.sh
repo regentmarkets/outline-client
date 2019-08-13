@@ -27,4 +27,4 @@ electron-builder \
   --win \
   --publish never \
   --config src/electron/electron-builder.json \
-  --config.extraMetadata.version=$(scripts/semantic_version.sh -p dev)
+#  --config.extraMetadata.version=$(scripts/semantic_version.sh -p dev)

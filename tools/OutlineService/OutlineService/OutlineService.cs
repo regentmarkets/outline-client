@@ -49,12 +49,12 @@ using Newtonsoft.Json;
  * Response
  *
  *  { statusCode: <int>, action: <string> errorMessage?: <string> }
- *  
+ *
  *  The service will send connection status updates if the pipe connection is kept
  *  open by the client. Such responses have the form:
- *  
+ *
  *  { statusCode: <int>, action: "statusChanged", connectionStatus: <int> }
- *  
+ *
  * View logs with this PowerShell query:
  * get-eventlog -logname Application -source OutlineService -newset 20 | format-table -property timegenerated,entrytype,message -autosize
  */
@@ -75,7 +75,14 @@ namespace OutlineService
         private const string PARAM_PROXY_IP = "proxyIp";
         private const string PARAM_AUTO_CONNECT = "isAutoConnect";
 
-        private static string[] IPV4_SUBNETS = { "0.0.0.0/1", "128.0.0.0/1" };
+        private static string[] IPV4_SUBNETS = {
+            "23.227.38.64/32",   // shop.binary.com
+            "69.16.238.161/32",  // cashier.binary.com
+            "104.18.97.31/32",   // bot.binary.com, charts.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com
+            "104.27.140.222/32", // www.binary.bot
+            "104.31.82.94/32",   // deriv.app
+            "178.128.115.5/32"   // deriv.com
+        };
         private static string[] IPV6_SUBNETS = { "fc00::/7", "2000::/4", "3000::/4" };
         private static string[] IPV4_RESERVED_SUBNETS = {
             "0.0.0.0/8",
@@ -964,7 +971,7 @@ namespace OutlineService
             }
         }
 
-        // Writes the connection status to the pipe, if it is connected. 
+        // Writes the connection status to the pipe, if it is connected.
         private void SendConnectionStatusChange(ConnectionStatus status)
         {
             if (pipe == null || !pipe.IsConnected)

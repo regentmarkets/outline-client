@@ -36,6 +36,7 @@
       "third_party/badvpn/win32",
       "third_party/shadowsocks-libev/win32"
     ],
+    "publisherName": "Binary.com",
     "icon": "build/icons/win/icon.ico"
   },
   "nsis": {
