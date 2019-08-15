@@ -78,7 +78,8 @@ namespace OutlineService
         private static string[] IPV4_SUBNETS = {
             "23.227.38.64/32",   // shop.binary.com
             "69.16.238.161/32",  // cashier.binary.com
-            "104.18.97.31/32",   // bot.binary.com, charts.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com
+            "104.17.189.91/32",  // binaryws.com
+            "104.18.97.31/32",   // bot.binary.com, charts.binary.com, cryptocurrency.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com
             "104.27.140.222/32", // www.binary.bot
             "104.31.82.94/32",   // deriv.app
             "178.128.115.5/32"   // deriv.com
