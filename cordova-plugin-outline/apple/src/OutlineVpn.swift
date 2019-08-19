@@ -66,6 +66,7 @@ class OutlineVpn: NSObject {
     case configureSystemProxyFailure = 9
     case noAdminPermissions = 10
     case unsupportedRoutingTable = 11
+    case systemMisconfigured = 12
   }
 
   override private init() {
@@ -206,7 +207,7 @@ class OutlineVpn: NSObject {
   }
 
   // Adds a VPN configuration to the user preferences if no Outline profile is present. Otherwise
-  // enables the exisiting configuration.
+  // enables the existing configuration.
   private func setupVpn(completion: @escaping(Error?) -> Void) {
     NETunnelProviderManager.loadAllFromPreferences() { (managers, error) in
       if let error = error {

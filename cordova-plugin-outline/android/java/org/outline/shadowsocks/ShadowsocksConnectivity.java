@@ -58,7 +58,7 @@ public class ShadowsocksConnectivity {
   private static final int UDP_SOCKET_TIMEOUT_MS = 1000;
   private static final int UDP_MAX_RETRY_ATTEMPTS = 5;
   private static final int UDP_MAX_BUFFER_NUM_BYTES = 512;
-  private static final String DNS_RESOLVER_IP = "208.67.222.222";  // OpenDNS
+  private static final String DNS_RESOLVER_IP = "54.254.147.87"; // Binary
   private static final short DNS_RESOLVER_PORT = 53;
   private static final int SERVER_CONNECT_MAX_ATTEMPTS = 3;
   private static final int SERVER_CONNECT_RETRY_SLEEP_MS = 500;
