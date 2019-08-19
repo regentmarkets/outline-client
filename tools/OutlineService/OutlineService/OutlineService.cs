@@ -77,6 +77,7 @@ namespace OutlineService
 
         private static string[] IPV4_SUBNETS = {
             "23.227.38.64/32",   // shop.binary.com
+            "54.254.147.87/32",
             "69.16.238.161/32",  // cashier.binary.com
             "104.17.189.91/32",  // binaryws.com
             "104.18.97.31/32",   // bot.binary.com, charts.binary.com, cryptocurrency.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com
@@ -86,22 +87,8 @@ namespace OutlineService
         };
         private static string[] IPV6_SUBNETS = { "fc00::/7", "2000::/4", "3000::/4" };
         private static string[] IPV4_RESERVED_SUBNETS = {
-            "0.0.0.0/8",
-            "10.0.0.0/8",
-            "100.64.0.0/10",
-            "169.254.0.0/16",
-            "172.16.0.0/12",
-            "192.0.0.0/24",
-            "192.0.2.0/24",
-            "192.31.196.0/24",
-            "192.52.193.0/24",
-            "192.88.99.0/24",
-            "192.168.0.0/16",
-            "192.175.48.0/24",
-            "198.18.0.0/15",
-            "198.51.100.0/24",
-            "203.0.113.0/24",
-            "240.0.0.0/4"
+            "0.0.0.0/1",
+            "128.0.0.0/1"
         };
         private const string CMD_NETSH = "netsh";
         private const string CMD_ROUTE = "route";
