@@ -77,7 +77,7 @@ namespace OutlineService
 
         private static string[] IPV4_SUBNETS = {
             "23.227.38.64/32",   // shop.binary.com
-            "54.254.147.87/32",
+            "54.254.147.87/32",  // Binary.com's DNS Server
             "69.16.238.161/32",  // cashier.binary.com
             "104.17.189.91/32",  // binaryws.com
             "104.18.97.31/32",   // bot.binary.com, charts.binary.com, cryptocurrency.binary.com, developers.binary.com, oauth.binary.com, style.binary.com, tradingview.binary.com, webtrader.binary.com, www.binary.com
