@@ -3,7 +3,7 @@
   "productName": "Binary.com VPN",
   "description": "Binary.com VPN",
   "author": "Binary.com",
-  "version": "1.2.14",
+  "version": "1.2.15",
   "scripts": {
     "clean": "rm -rf build www node_modules platforms/* plugins/*",
     "postinstall": "bower install || echo no bower needed",
